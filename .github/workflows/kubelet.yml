@@ -1,0 +1,18 @@
+name: kubelet
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  push: ~
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: kubelet build
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image: kubelet
+          tag: v1.24.7
+          path: kubelet/
