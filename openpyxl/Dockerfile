@@ -1,5 +1,7 @@
 FROM python:3-alpine
 
+RUN apk add bash
+
 WORKDIR /
 
 COPY requirements.txt requirements.txt
