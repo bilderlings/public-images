@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-RUN apk add bash
+RUN apk add bash curl
 
 WORKDIR /
 
