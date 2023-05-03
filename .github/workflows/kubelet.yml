@@ -14,5 +14,5 @@ jobs:
           registry: ghcr.io
           password: ${{ secrets.GITHUB_TOKEN }}
           image: kubelet
-          tag: v1.24.13
+          tag: v1.27.1
           path: kubelet/
