@@ -4,7 +4,7 @@ on:
     - cron: '0 0 * * 0'
   push: ~
 jobs:
-  docker:
+  "kubelet-24":
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -14,5 +14,19 @@ jobs:
           registry: ghcr.io
           password: ${{ secrets.GITHUB_TOKEN }}
           image: kubelet
-          tag: v1.27.1
+          tag: v1.24.14
           path: kubelet/
+          build_file: Dockerfile_1.24
+  "kubelet-27":
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: kubelet build
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image: kubelet
+          tag: v1.27.2
+          path: kubelet/
+          build_file: Dockerfile_1.27

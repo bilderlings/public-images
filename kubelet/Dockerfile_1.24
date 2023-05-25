@@ -1,0 +1,34 @@
+FROM docker.io/alpine:3.17 AS fetcher
+
+ARG KUBELET=v1.24.14
+ARG ARCH=amd64
+ARG SHA=564bfc3c6569c004d99e7c46ddbf8cd8c5a98b36d640dc73f3bc924ab5e37d68a177bb2d19c55bade6bb3a56ebf316cb3cdbb57fb21315a952734574cef6b15e
+
+RUN apk add curl && \
+  curl -L https://dl.k8s.io/${KUBELET}/kubernetes-node-linux-${ARCH}.tar.gz -o node.tar.gz && \
+  echo "${SHA}  node.tar.gz" | sha512sum -c && \
+  tar xzf node.tar.gz kubernetes/node/bin/kubectl kubernetes/node/bin/kubelet
+
+
+FROM us.gcr.io/k8s-artifacts-prod/build-image/debian-iptables:bullseye-v1.5.0
+
+RUN clean-install --allow-change-held-packages libcap2
+RUN clean-install \
+  bash \
+  ca-certificates \
+  ceph-common \
+  cifs-utils \
+  e2fsprogs \
+  xfsprogs \
+  ethtool \
+  glusterfs-client \
+  iproute2 \
+  jq \
+  nfs-common \
+  socat \
+  udev \
+  util-linux
+
+COPY --from=fetcher /kubernetes/node/bin/kubelet /usr/local/bin/kubelet
+COPY --from=fetcher /kubernetes/node/bin/kubectl /usr/local/bin/kubectl
+ENTRYPOINT ["/usr/local/bin/kubelet"]
