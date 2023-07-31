@@ -1,8 +1,8 @@
 FROM docker.io/alpine:3.18 AS fetcher
 
-ARG KUBELET=v1.24.15
+ARG KUBELET=v1.24.16
 ARG ARCH=amd64
-ARG SHA=4150880cba3d1f4e8ed32087f0be4252391d3d78ca88fd03a351323ba65a35224498c4cd818a1cf4b40e079689b8641cd25c6416445716bb80978611763aaa72
+ARG SHA=7eb125762e350fb1cb5a91ddbd91b004bf638a594e1ce0f3386bfd371e05b9da63982e029965ed8ed88b9afd3fdc9541690fff98322792e2eaa1ff23a41f599e
 
 RUN apk add curl && \
   curl -L https://dl.k8s.io/${KUBELET}/kubernetes-node-linux-${ARCH}.tar.gz -o node.tar.gz && \
@@ -10,7 +10,7 @@ RUN apk add curl && \
   tar xzf node.tar.gz kubernetes/node/bin/kubectl kubernetes/node/bin/kubelet
 
 
-FROM us.gcr.io/k8s-artifacts-prod/build-image/debian-iptables:bullseye-v1.5.0
+FROM us.gcr.io/k8s-artifacts-prod/build-image/debian-iptables:bullseye-v1.5.5
 
 RUN clean-install --allow-change-held-packages libcap2
 RUN clean-install \
