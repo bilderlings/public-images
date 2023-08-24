@@ -14,7 +14,7 @@ jobs:
           registry: ghcr.io
           password: ${{ secrets.GITHUB_TOKEN }}
           image: kubelet
-          tag: v1.24.16
+          tag: v1.24.17
           path: kubelet/
           build_file: Dockerfile_1.24
   "kubelet-27":
