@@ -1,7 +1,7 @@
 name: kubelet
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   push: ~
 jobs:
   "kubelet-24":
@@ -17,6 +17,19 @@ jobs:
           tag: v1.24.17
           path: kubelet/
           build_file: Dockerfile_1.24
+  "kubelet-25":
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: kubelet build
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image: kubelet
+          tag: v1.25.13
+          path: kubelet/
+          build_file: Dockerfile_1.25
   "kubelet-27":
     runs-on: ubuntu-latest
     steps:
