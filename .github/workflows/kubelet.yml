@@ -2,7 +2,8 @@ name: kubelet
 on:
   schedule:
     - cron: "0 0 * * 0"
-  push: ~
+  push:
+    paths: kubelet/*
 jobs:
   "kubelet":
     runs-on: ubuntu-latest

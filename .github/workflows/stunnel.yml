@@ -2,7 +2,8 @@ name: ssacli
 on:
   schedule:
     - cron: "0 0 * * 0"
-  push: ~
+  push:
+    paths: stunnel/*
 jobs:
   docker:
     runs-on: ubuntu-latest

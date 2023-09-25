@@ -1,8 +1,9 @@
 name: openpyxl
 on:
   schedule:
-    - cron: '0 0 * * 0'
-  push: ~
+    - cron: "0 0 * * 0"
+  push:
+    paths: openpyxl/*
 jobs:
   docker:
     runs-on: ubuntu-latest

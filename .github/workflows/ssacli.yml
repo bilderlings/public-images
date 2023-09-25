@@ -1,8 +1,9 @@
 name: ssacli
 on:
   schedule:
-    - cron: '0 0 * * 0'
-  push: ~
+    - cron: "0 0 * * 0"
+  push:
+    paths: ssacli/*
 jobs:
   docker:
     runs-on: ubuntu-latest

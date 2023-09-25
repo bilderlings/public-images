@@ -1,8 +1,9 @@
 name: Kubectl
 on:
   schedule:
-    - cron: '0 0 * * 0'
-  push: ~
+    - cron: "0 0 * * 0"
+  push:
+    paths: kubectl/*
 jobs:
   docker:
     runs-on: ubuntu-latest

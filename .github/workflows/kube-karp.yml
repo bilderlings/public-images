@@ -1,8 +1,10 @@
 name: Kube Karp
 on:
   schedule:
-    - cron: '0 0 * * 0'
-  push: ~
+    - cron: "0 0 * * 0"
+  push:
+    paths: kube-karp/*
+
 jobs:
   docker:
     runs-on: ubuntu-latest
