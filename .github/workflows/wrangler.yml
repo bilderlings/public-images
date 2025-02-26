@@ -1,0 +1,20 @@
+name: wrangler
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  push:
+    paths: wrangler/*
+jobs:
+  "wrangler":
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: kubelet build
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image: wrangler
+          tag: latest
+          path: wrangler/
+          build_file: Dockerfile
