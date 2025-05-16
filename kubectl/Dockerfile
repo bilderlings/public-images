@@ -1,7 +1,7 @@
-FROM alpine:3.18
+FROM alpine:3.21.3
 
 RUN apk add --no-cache bash yq jq curl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.3/bin/linux/amd64/kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN chmod +x kubectl
 RUN mv kubectl /bin/kubectl
 
