@@ -16,3 +16,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           image: minio-client
           path: minio-client/
+          tag: 2025-1
