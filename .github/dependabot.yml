@@ -1,6 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/golang"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/openpyxl"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/wrangler"
     schedule:
       interval: "daily"
