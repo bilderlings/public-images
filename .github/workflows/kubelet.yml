@@ -26,4 +26,4 @@ jobs:
         with:
           context: kubelet/
           push: true
-          tags: ghcr.io/${{ github.repository }}/kubelet:v1.34.2
+          tags: ghcr.io/${{ github.repository }}/kubelet:v1.34.0
