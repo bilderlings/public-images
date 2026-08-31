@@ -3,7 +3,8 @@ on:
   schedule:
     - cron: "0 0 * * 0"
   push:
-    paths: kube-karp/*
+    paths:
+      - kube-karp/*
 
 jobs:
   build:
