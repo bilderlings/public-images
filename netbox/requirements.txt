@@ -1,3 +1,3 @@
 netbox-map
-netbox-ping
+git+https://github.com/bilderlings/netbox-ping.git
 netbox-proxbox
