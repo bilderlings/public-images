@@ -1,3 +1,4 @@
 netbox-map
 git+https://github.com/bilderlings/netbox-ping.git
 netbox-proxbox
+netbox-unifi-sync
