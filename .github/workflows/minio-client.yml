@@ -27,4 +27,4 @@ jobs:
         with:
           context: minio-client/
           push: true
-          tags: ghcr.io/${{ github.repository }}/minio-client:2025-1
+          tags: ghcr.io/${{ github.repository }}/minio-client:latest
